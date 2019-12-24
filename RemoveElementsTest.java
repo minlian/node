@@ -25,6 +25,7 @@ public class RemoveElementsTest {
             return head;
         }
     }
+
     //递归删除简化版
     public ListNode removeElements2(ListNode head, int val) {
         if (head == null)
@@ -35,48 +36,49 @@ public class RemoveElementsTest {
 
     /**
      * 使用非递归删除
+     *
      * @param
      */
     //删除头结点时另做考虑（由于头结点没有前一个结点）
     public ListNode removeElements3(ListNode head, int val) {
         //删除值相同的头结点后，可能新的头结点也值相等，用循环解决
-        while(head != null && head.val == val){
+        while (head != null && head.val == val) {
             ListNode delNode = head;
             head = head.next;
             delNode.next = null;
         }
         //头结点等于null值
-        if(head == null)
+        if (head == null)
             return head;
         //确保当前结点后还有结点
         ListNode prev = head;
-        while(prev.next != null){
-            if(prev.next.val == val) {
+        while (prev.next != null) {
+            if (prev.next.val == val) {
                 ListNode delNode = prev.next;
                 prev.next = delNode.next;
                 delNode.next = null;
                 //可能不止一个val，所以prev不能移动，不能使用prev=prev.next
-            }
-            else
+            } else
                 prev = prev.next;
         }
         //返回head
         return head;
     }
+
     //简化版
     public ListNode removeElements4(ListNode head, int val) {
         //当head不为空且head的值等于val的时候
-        while(head != null && head.val == val)
+        while (head != null && head.val == val)
             head = head.next;
         //当head等于null的时
-        if(head == null)
+        if (head == null)
             return head;
 
         ListNode prev = head;
         //当下一个结点不为空时
-        while(prev.next != null){
+        while (prev.next != null) {
             //当下一个结点的值等于val时
-            if(prev.next.val == val)
+            if (prev.next.val == val)
                 //把待删除的结点跳过
                 prev.next = prev.next.next;
             else
@@ -86,6 +88,7 @@ public class RemoveElementsTest {
         //返回head
         return head;
     }
+
     //添加一个虚拟头结点，删除头结点就不用另做考虑
     public ListNode removeElements5(ListNode head, int val) {
 
@@ -93,15 +96,15 @@ public class RemoveElementsTest {
         dummyHead.next = head;
 
         ListNode prev = dummyHead;
-        while(prev.next != null){
-            if(prev.next.val == val)
+        while (prev.next != null) {
+            if (prev.next.val == val)
                 prev.next = prev.next.next;
             else
                 prev = prev.next;
         }
-
         return dummyHead.next;
     }
+
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5};
         ListNode head = new ListNode(nums);
