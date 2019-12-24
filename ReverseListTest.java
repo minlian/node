@@ -1,6 +1,6 @@
 package com.minlian.collection.cn.node;
 
-public class test {
+public class ReverseListTest {
 
     public ListNode reverseList1(ListNode head) {
         ListNode prev = null;
@@ -29,7 +29,7 @@ public class test {
         /*ListNode listNode1 = new test().reverseList1(head);
         System.out.println(listNode1);*/
         //使用递归实现
-        ListNode listNode2 = new test().reverseList2(head);
+        ListNode listNode2 = new ReverseListTest().reverseList2(head);
         System.out.println(listNode2);
 
 
